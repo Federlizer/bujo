@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Federlizer/bujo/issues"
   },
-  "homepage": "https://github.com/Federlizer/bujo#readme"
+  "homepage": "https://github.com/Federlizer/bujo#readme",
+  "devDependencies": {
+    "typescript": "^3.9.3"
+  }
 }

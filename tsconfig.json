@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "commonjs",
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "./build",
+    "rootDir": "./src",
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
