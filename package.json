@@ -1,0 +1,24 @@
+{
+  "name": "bujo",
+  "version": "0.1.0",
+  "description": "A server application running on NodeJS. Simulates a traditional bullet journal (as written in a notebook for example) but tempered for personal preferences (most importantly, IT'S DIGITAL :heart_eyes:)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Federlizer/bujo.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Nikola Anastasov Velichkov",
+    "emial": "federlizer@gmail.com",
+    "url": "http://federlizer.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Federlizer/bujo/issues"
+  },
+  "homepage": "https://github.com/Federlizer/bujo#readme"
+}
