@@ -25,5 +25,8 @@
   "homepage": "https://github.com/Federlizer/bujo#readme",
   "devDependencies": {
     "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "dayjs": "^1.8.28"
   }
 }
