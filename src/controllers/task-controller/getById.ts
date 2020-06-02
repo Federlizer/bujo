@@ -12,6 +12,7 @@ async function getById(id: number): Promise<Task|null> {
     text: dbTask.text,
     date: dbTask.date,
     completed: dbTask.completed,
+    monthly: dbTask.monthly,
   });
 
   return task;

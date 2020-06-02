@@ -1,26 +1,47 @@
 import * as dayjs from 'dayjs';
 
+function isNullOrUndefined(object: any): boolean {
+  if (object === null || object === undefined)
+    return true;
+  return false;
+}
+
 class Task {
-  id?: number;
-  text: string;
-  date: dayjs.Dayjs;
-  completed: boolean;
+  public id?: number;
+  public text: string;
+  public date: dayjs.Dayjs;
+  public completed: boolean;
+  public monthly: boolean;
 
-  constructor(params: { id?: number, text: string, date?: Date, completed?: boolean }) {
-    if (!(params.id === null || params.id === undefined))
+  public constructor(params: { id?: number, text: string, date?: Date, completed?: boolean, monthly?: boolean }) {
+    // id
+    if (!isNullOrUndefined(params.id)) {
       this.id = params.id;
+    }
 
+    // text
     this.text = params.text;
 
-    if (!(params.date === null || params.completed === undefined))
+    // date
+    if (!isNullOrUndefined(params.date)) {
       this.date = dayjs(params.date);
-    else
+    } else {
       this.date = dayjs();
+    }
 
-    if (!(params.completed === null || params.completed === undefined))
-      this.completed = params.completed;
-    else
+    // completed
+    if (!isNullOrUndefined(params.completed)) {
+      this.completed = !params.completed;
+    } else {
       this.completed = false;
+    }
+
+    // monthly
+    if (!isNullOrUndefined(params.monthly)) {
+      this.monthly = !params.monthly;
+    } else {
+      this.monthly = false;
+    }
   }
 }
 

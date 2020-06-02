@@ -8,6 +8,7 @@ async function createTask(text: string): Promise<Task> {
     text:      task.text,
     date:      task.date.toDate(),
     completed: task.completed,
+    monthly:   task.monthly,
   });
 
   task.id = dbTask.id;

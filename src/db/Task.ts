@@ -6,6 +6,7 @@ class Task extends Model {
   public text!: string;
   public date!: Date;
   public completed!: boolean;
+  public monthly!: boolean;
 
   public readonly createdAt!: Date;
   public readonly updatedAd!: Date;
@@ -26,6 +27,9 @@ Task.init({
     allowNull: false,
   },
   completed: {
+    type: DataTypes.BOOLEAN,
+  },
+  montly: {
     type: DataTypes.BOOLEAN,
   },
 }, {
