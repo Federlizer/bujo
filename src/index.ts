@@ -1,31 +1,47 @@
-import sequelize from './db';
-import taskController from './controllers/task-controller';
+import * as dayjs from 'dayjs';
 
+import TaskDb from './db/Task';
+import taskController from './controllers/task-controller';
 import Task from './models/Task';
 
-let taskId: number;
+const start = dayjs();
+const end = dayjs();
 
-console.log('Authenticating...');
-sequelize.authenticate()
+// sync all models
+TaskDb
+  .sync({ force: true })
   .then(() => {
-    console.log('Successful connection to sequelize');
-
-    return taskController.createTask('Some random text here');
+    const tasks = [
+      {
+        text: 'Task today',
+        date: "2020-06-02",
+        completed: false,
+        monthly: false,
+      },
+      {
+        text: 'Task yesterday',
+        date: "2020-06-01",
+        completed: false,
+        monthly: false,
+      },
+      {
+        text: 'Task tomorrow',
+        date: "2020-06-03",
+        completed: false,
+        monthly: false,
+      },
+    ];
+    return TaskDb.bulkCreate(tasks);
   })
-  .then((task: Task) => {
-    if (task.id === undefined)
-      throw new Error("Task.id is undefined");
-
-    taskId = task.id;
-    console.log(`New taskId: ${taskId}`);
-
-    return taskController.getById(taskId!);
+  .then(() => {
+    return taskController.getInRange(start, end)
   })
-  .then((task: Task | null) => {
-    if (task === null)
-      console.error(`Task with id ${taskId} wasn't found`);
-    console.log(task);
+  .then((tasks: Task[]) => {
+    tasks.map((task: Task) => {
+      console.log(`${task.text}: ${task.date.format('YYYY-MM-DD')}`);
+      console.log(`${new Date(2020, 5, 2)}`);
+    });
   })
-  .catch((err) => {
+  .catch((err: Error) => {
     console.error(err);
   });
