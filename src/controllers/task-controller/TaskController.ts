@@ -39,6 +39,16 @@ export default {
   },
 
   /**
+   * Fetches all saved tasks from the database.
+   *
+   * @returns {Task[]} an array with all tasks saved on the database
+   */
+  async getAll(): Promise<Task[]> {
+    const taskDbList = await TaskDb.findAll();
+    return taskDbList.map(buildTaskObject);
+  },
+
+  /**
    * Fetches a task from the database by a passed ID.
    *
    * @param {number} id - the id to search by
