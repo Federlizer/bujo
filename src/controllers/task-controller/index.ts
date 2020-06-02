@@ -1,9 +1,3 @@
-import createTask from './createTask';
-import getById from './getById';
-import getInRange from './getInRange';
+import taskController from './TaskController';
 
-export default {
-  createTask,
-  getById,
-  getInRange,
-}
+export default taskController;
