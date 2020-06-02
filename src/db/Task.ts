@@ -29,7 +29,7 @@ Task.init({
   completed: {
     type: DataTypes.BOOLEAN,
   },
-  montly: {
+  monthly: {
     type: DataTypes.BOOLEAN,
   },
 }, {
