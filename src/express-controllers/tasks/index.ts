@@ -4,6 +4,8 @@ import taskController from '../../controllers/task-controller';
 
 import Task from '../../models/Task';
 
+import createTaskHttpBodySchema from '../../validation/createTaskHttpBodySchema';
+
 export default {
   /**
    * GET /
@@ -19,8 +21,23 @@ export default {
    * POST /
    * Create a new task
    */
-  async createNewTask(_: Request, res: Response): Promise<void> {
-    res.status(500).send('Not implemented');
+  async createNewTask(req: Request, res: Response): Promise<void> {
+    const { error, value } = createTaskHttpBodySchema.validate(req.body);
+
+    if (error) {
+      res.status(400).send(error.message);
+      return;
+    }
+
+    const { text, date, monthly } = value;
+
+    const task: Task = await taskController.createTask({
+      text,
+      date,
+      monthly,
+    });
+
+    res.status(200).json(task);
   },
 
   /**

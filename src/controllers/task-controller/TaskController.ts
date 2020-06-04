@@ -25,8 +25,9 @@ export default {
    *
    * @returns {Task} a newly inserted task with the new ID assigned to it after insertion
    */
-  async createTask(text: string): Promise<Task> {
-    const task = new Task({ text });
+  async createTask(params: {text: string, date?: Date, monthly?: boolean}): Promise<Task> {
+    const task = new Task(params);
+
     const taskDbInstance = await TaskDb.create({
       text:      task.text,
       date:      task.date,
