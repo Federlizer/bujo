@@ -31,14 +31,14 @@ class Task {
 
     // completed
     if (!isNullOrUndefined(params.completed)) {
-      this.completed = !params.completed;
+      this.completed = params.completed!;
     } else {
       this.completed = false;
     }
 
     // monthly
     if (!isNullOrUndefined(params.monthly)) {
-      this.monthly = !params.monthly;
+      this.monthly = params.monthly!;
     } else {
       this.monthly = false;
     }
