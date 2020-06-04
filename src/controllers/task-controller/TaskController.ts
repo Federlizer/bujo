@@ -68,6 +68,29 @@ export default {
   },
 
   /**
+   * Toggles a task's complete flag. If it was previously completed,
+   * after the execution of this function, the task will not be
+   * considered completed and vice versa.
+   *
+   * @param {number} id - the id of the task to toggle
+   *
+   * @returns {Task|null} the task that was toggled or null if the task wasn't found
+   */
+  async toggleTaskCompletion(id: number): Promise<Task|null> {
+    const taskDbInstance = await TaskDb.findByPk(id);
+
+    if (taskDbInstance === null)
+      return null;
+
+    taskDbInstance.completed = !taskDbInstance.completed;
+    await taskDbInstance.save();
+
+    const task: Task = buildTaskObject(taskDbInstance);
+
+    return task;
+  },
+
+  /**
    * Fetches a list of tasks within a specified range. Both `start` and `end`
    * are inclusive.
    *

@@ -54,7 +54,7 @@ export default {
     }
 
     const task: Task|null = await taskController.getById(parsedId);
-    
+
     if (task === null) {
       res.status(404).end();
       return;
@@ -67,7 +67,7 @@ export default {
    * POST /:id
    * Complete a task by id
    */
-  async completeTask(req: Request, res: Response): Promise<void> {
+  async toggleTaskCompletion(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
     const parsedId = Number.parseInt(id);
 
@@ -76,18 +76,14 @@ export default {
       return;
     }
 
-    /*
-    const task: Task|null = await taskController.completeTaskById(id);
+    const task: Task|null = await taskController.toggleTaskCompletion(parsedId);
 
     if (task === null) {
       res.status(404).end();
       return;
     }
 
-    res.status(200).end();
-    */
-
-    res.status(500).send('Not implemented');
+    res.status(200).json(task);
   },
 
   /**
