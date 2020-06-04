@@ -1,3 +1,5 @@
+import * as Joi from '@hapi/joi';
+import * as dayjs from 'dayjs';
 import { Request, Response } from 'express';
 
 import taskController from '../../controllers/task-controller';
@@ -90,7 +92,29 @@ export default {
    * GET /range?start=datestring&end=datestring
    * Gets tasks within a specified range
    */
-  async getInRange(_: Request, res: Response): Promise<void> {
-    res.status(500).send('Not implemented');
+  async getInRange(req: Request, res: Response): Promise<void> {
+    const { start, end } = req.query;
+
+    const dateSchema = Joi.date();
+
+    const { error: startError, value: startValue} = dateSchema
+      .validate(start);
+    const { error: endError, value: endValue} = dateSchema
+      .validate(end);
+
+    if (startError) {
+      res.status(400).send(startError.message);
+      return;
+    }
+
+    if (endError) {
+      res.status(400).send(endError.message);
+      return;
+    }
+
+    const tasks: Task[] = await taskController
+      .getInRange(dayjs(startValue), dayjs(endValue));
+
+    res.status(200).json(tasks);
   },
 }

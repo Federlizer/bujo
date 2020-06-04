@@ -14,5 +14,5 @@ For now, only MVP routes, later we'll add more.
 [x] GET /api/tasks/{id} - get a task by its ID
 [x] POST /api/tasks/{id} - toggle a task's complete flag by its ID
 
-[ ] GET /api/tasks/range?start=datestring&end=datestring - gets tasks within a range
+[x] GET /api/tasks/range?start=datestring&end=datestring - gets tasks within a range
 ```
