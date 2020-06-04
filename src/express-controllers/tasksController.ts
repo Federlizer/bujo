@@ -2,11 +2,11 @@ import * as Joi from '@hapi/joi';
 import * as dayjs from 'dayjs';
 import { Request, Response } from 'express';
 
-import taskController from '../../controllers/task-controller';
+import taskController from '../controllers/taskController';
 
-import Task from '../../models/Task';
+import Task from '../models/Task';
 
-import createTaskHttpBodySchema from '../../validation/createTaskHttpBodySchema';
+import createTaskHttpBodySchema from '../validation/createTaskHttpBodySchema';
 
 export default {
   /**

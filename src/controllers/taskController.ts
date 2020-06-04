@@ -1,8 +1,8 @@
 import { Op } from 'sequelize';
 import { Dayjs } from 'dayjs';
 
-import TaskDb from '../../db/Task';
-import Task from '../../models/Task';
+import TaskDb from '../db/Task';
+import Task from '../models/Task';
 
 function buildTaskObject(taskDbInstance: TaskDb): Task {
   const task = new Task({
