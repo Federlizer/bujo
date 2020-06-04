@@ -30,7 +30,7 @@ export default {
 
     const taskDbInstance = await TaskDb.create({
       text:      task.text,
-      date:      task.date,
+      date:      task.date.toDate(),
       completed: task.completed,
       monthly:   task.monthly,
     });
