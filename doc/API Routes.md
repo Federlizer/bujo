@@ -3,7 +3,7 @@
 For now, only MVP routes, later we'll add more.
 
 ```
-[ ] GET /api/tasks - gets all tasks
+[x] GET /api/tasks - gets all tasks
 [ ] POST /api/tasks - create a new task
     {
       "text": string (len > 0, len <= 500),
@@ -11,7 +11,7 @@ For now, only MVP routes, later we'll add more.
       "date" ?: date string or Date object,
     }
 
-[ ] GET /api/tasks/{id} - get a task by its ID
+[x] GET /api/tasks/{id} - get a task by its ID
 [ ] POST /api/tasks/{id} - complete a task by its ID
 
 [ ] GET /api/tasks/range?start=datestring&end=datestring - gets tasks within a range
